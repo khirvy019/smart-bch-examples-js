@@ -11,6 +11,24 @@ export function getProvider() {
   return new ethers.providers.JsonRpcProvider(walletConf.test ? rpcUrls.test : rpcUrls.main);
 }
 
+export function getWallets() {
+  const provider = getProvider();
+  return walletConf.wallets.map(walletInfo => {
+    if (!walletInfo) return
+
+    try {
+      let wallet = ethers.Wallet.fromMnemonic(
+        walletInfo.mnemonic,
+        walletInfo.path,
+      )
+      return wallet.connect(provider)
+    } catch(err) {
+      return
+    }
+
+  })
+}
+
 export function getWallet(accountNo=0) {
   const provider = getProvider();
   let wallet = ethers.Wallet.fromMnemonic(
