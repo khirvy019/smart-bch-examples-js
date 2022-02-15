@@ -8,3 +8,7 @@ export async function query(text) {
     })
   })
 }
+
+export function isAddress(address) {
+  return /^(0x)?[0-9a-f]{40}$/i.test(address)
+}
