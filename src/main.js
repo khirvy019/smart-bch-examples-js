@@ -53,3 +53,11 @@ export function getTokenContracts() {
   }
   return contracts
 }
+
+export function getTokenContract(contractAddress) {
+  return new ethers.Contract(
+    contractAddress,
+    sep20Abi,
+    getProvider(),
+  )
+}
