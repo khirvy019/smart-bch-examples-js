@@ -55,7 +55,7 @@ if (showRaw) {
   txs.forEach((tx, index) => {
     const received = tx.to.toLowerCase() === wallet.address.toLowerCase()
     console.log(
-      `${index}:`,
+      `${index} (${tx.hash}):`,
       received ? 'Received' : 'Sent',
       utils.formatEther(BigNumber.from(tx.value)),
       'BCH', 
@@ -92,11 +92,11 @@ for (var i = 0; i < tokenContracts.length; i++) {
   logs.forEach((log, index) => {
     const parsedLog = tokenContract.interface.parseLog(log)
     if (showRaw) {
-      console.log('Log', index, ':', parsedLog)
+      console.log('Log', index, `(${log.transactionHash})`, ':', parsedLog)
     } else {
       const received = String(parsedLog.args._to).toLowerCase === wallet.address.toLowerCase()
       console.log(
-        'Tx', index, ':',
+        'Tx', index, `(${log.transactionHash})`, ':',
         received ? 'Received' : 'Sent',
         utils.formatEther(parsedLog.args._value),
         symbol,
