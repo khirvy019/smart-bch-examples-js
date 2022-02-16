@@ -53,7 +53,7 @@ if (showRaw) {
   console.log(txs)
 } else {
   txs.forEach((tx, index) => {
-    const received = tx.to.toLowerCase() === wallet.address.toLowerCase()
+    const received = String(tx.to).toLowerCase() === wallet.address.toLowerCase()
     console.log(
       `${index} (${tx.hash}):`,
       received ? 'Received' : 'Sent',
@@ -94,7 +94,7 @@ for (var i = 0; i < tokenContracts.length; i++) {
     if (showRaw) {
       console.log('Log', index, `(${log.transactionHash})`, ':', parsedLog)
     } else {
-      const received = String(parsedLog.args._to).toLowerCase === wallet.address.toLowerCase()
+      const received = String(parsedLog.args._to).toLowerCase() === wallet.address.toLowerCase()
       console.log(
         'Tx', index, `(${log.transactionHash})`, ':',
         received ? 'Received' : 'Sent',
