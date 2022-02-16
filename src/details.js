@@ -4,12 +4,16 @@ import { hideBin } from 'yargs/helpers'
 import { getWallet, getWallets } from "./main.js";
 
 const argv = await yargs(hideBin(process.argv))
+  .usage([
+    '$0 [-w|--wallet=-1]\n',
+    'Shows details of wallet/s',
+  ].join('\n'))
   .option('wallet', {
     alias: 'w',
-    desc: 'Index of wallet to use in coinfg/wallet-conf.js',
+    desc: 'Index of wallet to use in config/wallet-conf.js. Shows all wallet by default',
     number: true,
     default: -1,
-  }) 
+  })
   .parse()
 
 const walletIndex = argv.wallet

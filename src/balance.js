@@ -5,9 +5,13 @@ import { utils } from "ethers"
 import { getWallet, getTokenContracts } from "./main.js";
 
 const argv = await yargs(hideBin(process.argv))
+  .usage([
+    '$0 [-w|--wallet=0]\n',
+    'Shows balance of a wallet and other tokens listed in config/wallet-conf.js',
+  ].join('\n'))
   .option('wallet', {
     alias: 'w',
-    desc: 'Index of wallet to use in coinfg/wallet-conf.js',
+    desc: 'Index of wallet to use in config/wallet-conf.js',
     number: true,
     default: 0,
   }) 
