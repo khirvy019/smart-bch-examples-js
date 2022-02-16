@@ -41,17 +41,14 @@ export function getWallet(accountNo=0) {
 
 export function getTokenContracts() {
   const tokenAddresses = walletConf.test ? walletConf.testTokens : walletConf.tokens
-  const contracts = []
-  if (Array.isArray(tokenAddresses)) {
-    tokenAddresses.forEach(contractAddress => {
-      contracts.push(new ethers.Contract(
-        contractAddress,
-        sep20Abi,
-        getProvider(),
-      ))
-    })
-  }
-  return contracts
+
+  return tokenAddresses.map(contractAddress => {
+    return new ethers.Contract(
+      contractAddress,
+      sep20Abi,
+      getProvider(),
+    )
+  })
 }
 
 export function getTokenContract(contractAddress) {

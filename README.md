@@ -13,7 +13,7 @@ Commands:
     balance         - show balance of a wallet
     send            - send bch to another wallet
     send-token      - send a sep20 token to another wallet
-    txs             - show txs, does not include sep20 tokens at the moment
+    txs             - Show latest transactions of the wallet including SEP20 transactions
 
 Check node <command> --help for more info
 ```
