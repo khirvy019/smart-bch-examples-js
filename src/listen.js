@@ -49,7 +49,7 @@ export async function watchTransactions(address, callback) {
   await Promise.all(
     contracts.map(async (contract) => {
       const receiveFilter = contract.filters.Transfer(null, address);
-      const sendFilter = contract.filters.Transfer(null, address);
+      const sendFilter = contract.filters.Transfer(address);
   
       const tokenName = await contract.name();
       const tokenSymbol = await contract.symbol();
