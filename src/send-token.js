@@ -3,7 +3,7 @@ import { hideBin } from 'yargs/helpers'
 
 import { utils } from 'ethers'
 import { getWallet, getTokenContract } from './main.js'
-import { query, isAddress } from './utils.js'
+import { query } from './utils.js'
 
 
 const argv = await yargs(hideBin(process.argv))
@@ -44,13 +44,13 @@ let recipient = argv.recipient
 let amountStr = argv.amount
 const skipConfirm = argv['skip-confirm']
 
-while(!isAddress(tokenAddress)) {
+while(!utils.isAddress(tokenAddress)) {
   const prompt = recipient ? "Invalid token address, please input an address:" : "Please input a token address:"
   tokenAddress = await query(prompt)
   tokenAddress = tokenAddress.trim()
 }
 
-while(!isAddress(recipient)) {
+while(!utils.isAddress(recipient)) {
   const prompt = recipient ? "Invalid recipient address, please input an address:" : "Please input a recipient address:"
   recipient = await query(prompt)
   recipient = recipient.trim()

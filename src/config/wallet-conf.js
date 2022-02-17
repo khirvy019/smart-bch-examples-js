@@ -9,6 +9,10 @@ export default {
   // wallet credentials
   wallets: [
     {
+      mnemonic: "genre ankle jeans funny then sadness typical govern purchase cactus other always",
+      path: "m/44'/60'/0'/0/0",
+    },
+    {
       mnemonic: "electric legal eight crack series tomorrow donkey renew permit know bonus toss",
       path: "m/44'/60'/0'/0/0",
     },
@@ -26,8 +30,8 @@ export default {
   testTokens: [
     "0xFa77D1D8AADDd9a263C7d685375EF148E268c558",
     "0x9E06bF2B60f42e5bA8E0c9BDfB2242924d09fD78", // amm
-    "0x2618B5927957969B346E60694e77213923eb11e5", // art
-    "0xd3063d326d528c614df2Ab23D0C1A2C701F839EA", // cvt
-    "0x4cA751A20FE9b130c0fa598DA21348B20108f51a", // scf        
+    // "0x2618B5927957969B346E60694e77213923eb11e5", // art
+    // "0xd3063d326d528c614df2Ab23D0C1A2C701F839EA", // cvt
+    // "0x4cA751A20FE9b130c0fa598DA21348B20108f51a", // scf        
   ]
 }
