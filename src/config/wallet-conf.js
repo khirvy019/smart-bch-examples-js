@@ -9,10 +9,6 @@ export default {
   // wallet credentials
   wallets: [
     {
-      mnemonic: "genre ankle jeans funny then sadness typical govern purchase cactus other always",
-      path: "m/44'/60'/0'/0/0",
-    },
-    {
       mnemonic: "electric legal eight crack series tomorrow donkey renew permit know bonus toss",
       path: "m/44'/60'/0'/0/0",
     },
