@@ -26,11 +26,17 @@ const argv = await yargs(hideBin(process.argv))
     number: true,
     default: 10,
   })
+  .option('exclude-tokens', {
+    desc: 'Exclude showing SEP20 tokens',
+    boolean: true,
+    default: false,
+  })
   .parse()
 
 const walletIndex = argv.wallet
 const showRaw = argv.raw
 const txCount = argv.number
+const excludeTokens = argv['exclude-tokens']
 const wallet = getWallet(walletIndex)
 
 
@@ -67,6 +73,9 @@ if (showRaw) {
   })
 }
 
+if (excludeTokens) {
+  process.exit(0)
+}
 const tokenContracts = getTokenContracts()
 console.log('Getting transactions for tokens')
 
