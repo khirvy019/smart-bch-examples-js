@@ -14,6 +14,7 @@ Commands:
     send            - send bch to another wallet
     send-token      - send a sep20 token to another wallet
     txs             - Show latest transactions of the wallet including SEP20 transactions
+    listen          - Runs a listener that watches for transaction of an address. Also listens to listed tokens
 
 Check node <command> --help for more info
 ```
