@@ -1,60 +1,21 @@
-import walletConf from './config/wallet-conf.js'
-import sep20Abi from './config/sep-20-abi.js'
-import { ethers } from 'ethers'
+import yargs from 'yargs'
 
-const rpcUrls = {
-  test: 'http://35.220.203.194:8545/',
-  main: 'https://smartbch.fountainhead.cash/mainnet'
-}
+import * as balance from './cmds/balance.js'
+import * as listErc721 from './cmds/list-erc721.js'
+import * as listen from './cmds/listen.js'
+import * as sendSep20 from './cmds/send-sep20.js'
+import * as send from './cmds/send.js'
+import * as txs from './cmds/txs.js'
+import * as wallets from './cmds/wallets.js'
 
-export function getProvider() {
-  return new ethers.providers.JsonRpcBatchProvider(walletConf.test ? rpcUrls.test : rpcUrls.main);
-}
-
-export function getWallets() {
-  const provider = getProvider();
-  return walletConf.wallets.map(walletInfo => {
-    if (!walletInfo) return
-
-    try {
-      let wallet = ethers.Wallet.fromMnemonic(
-        walletInfo.mnemonic,
-        walletInfo.path,
-      )
-      return wallet.connect(provider)
-    } catch(err) {
-      return
-    }
-
-  })
-}
-
-export function getWallet(accountNo=0) {
-  const provider = getProvider();
-  let wallet = ethers.Wallet.fromMnemonic(
-    walletConf.wallets[accountNo].mnemonic,
-    walletConf.wallets[accountNo].path,
-  )
-  wallet = wallet.connect(provider)
-  return wallet
-}
-
-export function getTokenContracts() {
-  const tokenAddresses = walletConf.test ? walletConf.testTokens : walletConf.tokens
-
-  return tokenAddresses.map(contractAddress => {
-    return new ethers.Contract(
-      contractAddress,
-      sep20Abi,
-      getProvider(),
-    )
-  })
-}
-
-export function getTokenContract(contractAddress) {
-  return new ethers.Contract(
-    contractAddress,
-    sep20Abi,
-    getProvider(),
-  )
-}
+yargs(process.argv.slice(2))
+  .command(balance)
+  .command(listErc721)
+  .command(listen)
+  .command(sendSep20)
+  .command(send)
+  .command(txs)
+  .command(wallets)
+  .demandCommand()
+  .help()
+  .argv
