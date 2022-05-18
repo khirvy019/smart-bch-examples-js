@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@psf/bch-js": "^6.2.9",
     "axios": "^0.26.0",
     "ethers": "^5.5.4",
     "yargs": "^17.3.1"

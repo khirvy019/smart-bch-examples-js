@@ -1,9 +1,26 @@
-import { ethers } from 'ethers'
+import { ethers, utils } from 'ethers'
 import * as config from './config/index.js'
 
+class CustomProvider extends ethers.providers.JsonRpcBatchProvider {
+  async detectNetwork() {
+    const network = await super.detectNetwork()
+    // only in mainnet
+    network.ensAddress = '0xCfb86556760d03942EBf1ba88a9870e67D77b627'
+    return Promise.resolve(network)
+  }
+}
 
 export function getProvider() {
-  return new ethers.providers.JsonRpcBatchProvider(config.network.test ? config.network.rpcUrls.test : config.network.rpcUrls.main);
+  return new CustomProvider(config.network.test ? config.network.rpcUrls.test : config.network.rpcUrls.main);
+}
+
+export async function getResolver(ensAddress, name) {
+  const provider = getProvider()
+  const transaction = {
+    to: ensAddress,
+    data: ("0x0178b8bf" + utils.namehash(name).substring(2))
+  };
+  return provider.formatter.callAddress(await provider.call(transaction))
 }
 
 export function getWallet(accountNo=0, walletInfo={mnemonic: '', path: '', privateKey: ''}) {

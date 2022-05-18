@@ -3,7 +3,7 @@ import * as abi from './abi.js'
 export { abi }
 
 export const network = {
-  test: true,
+  test: false,
   rpcUrls: {
     test: 'http://35.220.203.194:8545/',
     main: 'https://smartbch.fountainhead.cash/mainnet',
@@ -38,3 +38,7 @@ export const testTokens = [
   // "0xd3063d326d528c614df2Ab23D0C1A2C701F839EA", // cvt
   // "0x4cA751A20FE9b130c0fa598DA21348B20108f51a", // scf
 ]
+
+export const lns = {
+  ensAddress: '0xCfb86556760d03942EBf1ba88a9870e67D77b627',
+}
