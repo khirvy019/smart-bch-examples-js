@@ -5,7 +5,7 @@ class CustomProvider extends ethers.providers.JsonRpcBatchProvider {
   async detectNetwork() {
     const network = await super.detectNetwork()
     // only in mainnet
-    network.ensAddress = '0xCfb86556760d03942EBf1ba88a9870e67D77b627'
+    network.ensAddress = config.lns.ensAddress
     return Promise.resolve(network)
   }
 }
