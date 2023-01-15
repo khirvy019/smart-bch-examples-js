@@ -47,6 +47,24 @@ export const erc721Enumerable = [
   'function tokenOfOwnerByIndex(address _owner, uint256 _index) external view returns (uint256)',
 ]
 
+// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-137.md
+export const eip137 = [
+  'function owner(bytes32 node) constant returns (address)',
+  'function resolver(bytes32 node) constant returns (address)',
+  'function ttl(bytes32 node) constant returns (uint64)',
+
+  'function setOwner(bytes32 node, address owner)',
+  'function setSubnodeOwner(bytes32 node, bytes32 label, address owner)',
+  'function setResolver(bytes32 node, address resolver)',
+  'function setTTL(bytes32 node, uint64 ttl)',
+
+  'function supportsInterface(bytes4 interfaceID) constant returns (bool)',
+
+  'function addr(bytes32 node) constant returns (address)',
+
+  'event AddrChanged(bytes32 indexed node, address a)',
+]
+
 export const erc721 = [
   ...erc721Base,
   ...erc165,
