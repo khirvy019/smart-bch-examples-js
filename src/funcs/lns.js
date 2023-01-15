@@ -41,7 +41,11 @@ if (p2pkh) {
   legacyAddress = base58Encode(utils.concat([ [ 0x05 ], ("0x" + p2sh[2]) ]))
 }
 
-console.log(legacyAddress2)
-console.log(legacyAddress)
-console.log(bchjs.Address.toCashAddress(legacyAddress))
-console.log(bchjs.SLP.Address.toSLPAddress(legacyAddress))
+const response = {
+  hexBytes,
+  legacyAddress,
+  cashAddress: bchjs.Address.toCashAddress(legacyAddress),
+  slpAddress: bchjs.SLP.Address.toSLPAddress(legacyAddress),
+}
+
+console.log(response)
